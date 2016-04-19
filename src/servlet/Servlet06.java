@@ -18,7 +18,7 @@
   - 단, 이 방식은 HTTP프로토콜에서 POST 방식으로 넘어 온 데이터에 대해서만 적용된다.
     GET 요청으로 넘어 온 데이터는 각 서블릿 컨테이너의 제품에 따라 설정 방법이 다르다.
                          
-*/ 
+*/
 package servlet;
 
 import java.io.IOException;
@@ -30,30 +30,22 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 
 public class Servlet06 extends GenericServlet {
-  private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-  @Override
-  public void service(ServletRequest request, ServletResponse response) 
-      throws ServletException, IOException {
-    // 보내는 데이터가 어떤 문자 집합인지 지정한다.
-    request.setCharacterEncoding("UTF-8");
-    
-    String name = request.getParameter("name");
-    String age = request.getParameter("age");
-    String tel = request.getParameter("tel");
-    
-    System.out.println(name);
-    System.out.println(age);
-    System.out.println(tel);
-    ((HttpServletResponse)response).sendRedirect("http://www.naver.com");    
-  }
- 
+	@Override
+	public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
+		// Request의 문자셋 지정
+		
+		request.setCharacterEncoding("UTF-8");
+
+		String name = request.getParameter("name");
+		String age = request.getParameter("age");
+		String tel = request.getParameter("tel");
+
+		System.out.println(name);
+		System.out.println(age);
+		System.out.println(tel);
+		((HttpServletResponse) response).sendRedirect("http://www.naver.com");
+	}
+
 }
-
-
-
-
-
-
-
-
